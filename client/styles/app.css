@@ -1,0 +1,244 @@
+#login-content > * {
+  max-width: 350px;
+}
+#login-content form > .md-warn {
+  padding-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * App-wide Styles
+ */
+body {
+  overflow: hidden;
+}
+
+main {
+  overflow: auto;
+}
+
+button.md-button.md-fab.fab-overlap[disabled] {
+  background: #eee;
+}
+button.md-button.md-fab.fab-overlap.md-fab-top-left {
+  left: 12px;
+}
+
+md-list.fab-padding {
+  padding-bottom: 56px;
+}
+md-list .list-info {
+  color: rgba(0, 0, 0, 0.24);
+}
+md-list md-item.selected {
+  background: #e3f2fd;
+}
+md-list md-item.list-head {
+  color: #888;
+}
+md-list md-item.list-head md-item-content {
+  padding-left: 64px;
+}
+
+md-dialog {
+  max-height: 85%;
+}
+
+md-toolbar .md-toolbar-tools.toolbar-tools-fab-overlap {
+  padding-left: 78px;
+}
+md-toolbar .md-button:not(.md-fab) {
+  min-width: 1em;
+}
+md-toolbar .subtitle {
+  font-size: .5em;
+}
+md-toolbar.md-tall button.md-button.md-fab.fab-overlap.md-fab-top-right, md-toolbar.md-tall button.md-button.md-fab.fab-overlap.md-fab-top-left {
+  top: 112px;
+}
+md-toolbar.md-medium-tall button.md-button.md-fab.fab-overlap.md-fab-top-right, md-toolbar.md-medium-tall button.md-button.md-fab.fab-overlap.md-fab-top-left {
+  top: 72px;
+}
+md-toolbar.md-medium-tall button.md-button.md-fab.fab-overlap.md-fab-top-left {
+  left: 12px;
+}
+
+md-content[ui-view="detail"] {
+  background-color: whitesmoke;
+}
+md-content[ui-view="detail"] md-content, md-content[ui-view="detail"] md-tabs {
+  background-color: whitesmoke;
+}
+
+img.list-image {
+  border-radius: 30px;
+  width: 42px;
+  margin: 8px 16px;
+  border: 1px solid #eee;
+}
+
+list-image div, list-image img {
+  border-radius: 30px;
+  width: 42px;
+  margin: 8px 16px;
+  border: none;
+  color: #fff;
+}
+list-image div.md-light-blue-dark-theme, list-image img.md-light-blue-dark-theme {
+  color: #000;
+  border: 1px solid #888;
+}
+list-image div {
+  height: 42px;
+  text-align: center;
+  line-height: 42px;
+}
+list-image div span {
+  font-size: 20px;
+}
+
+md-sidenav[md-component-id="mainMenu"] md-toolbar list-image div {
+  margin: 0 16px 0 0;
+}
+md-sidenav[md-component-id="mainMenu"] ul {
+  list-style: none;
+  padding: 0;
+}
+md-sidenav[md-component-id="mainMenu"] li {
+  margin: 0;
+}
+md-sidenav[md-component-id="mainMenu"] md-content ul > li > ul > li > .md-button {
+  padding-left: 42px;
+}
+md-sidenav[md-component-id="mainMenu"] md-content .md-button {
+  display: block;
+  border-radius: 0;
+  color: inherit;
+  cursor: pointer;
+  font-weight: 400;
+  line-height: 40px;
+  margin: 0;
+  max-height: 40px;
+  overflow: hidden;
+  padding: 0px 16px;
+  text-align: left;
+  text-decoration: none;
+  white-space: normal;
+  width: 100%;
+}
+
+
+
+[toggle-component].toggle-component-locked-open {
+  display: block;
+}
+[toggle-component].toggle-component-closed {
+  display: none;
+}
+
+md-input-container md-select {
+  flex: 1;
+  order: 2;
+  display: block;
+  background: none;
+  padding: 12px 0 0 0;
+  line-height: 26px;
+  -ms-flex-preferred-size: 26px;
+  border-radius: 0;
+  margin: 0;
+}
+md-input-container md-select .md-select-label {
+  font-size: 14px;
+}
+md-input-container md-select .md-select-icon {
+  display: none;
+}
+md-input-container.md-input-has-value md-select {
+  padding: 1px 0px 0px 0px;
+  border-bottom: none;
+}
+md-input-container.md-input-has-value md-select .md-select-icon {
+  display: block;
+}
+
+.md-select-label {
+  font-size: 14px;
+}
+
+.thing-form {
+  margin: 20px 0;
+}
+
+#banner {
+  border-bottom: none;
+  margin-top: -20px;
+}
+
+#banner h1 {
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.hero-unit {
+  position: relative;
+  padding: 30px 15px;
+  color: #F5F5F5;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  background: #4393B9;
+}
+
+.footer {
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 70px;
+  border-top: 1px solid #E5E5E5;
+}
+
+.section {
+  padding: 16px 0 16px 0;
+}
+.section span {
+  font-size: 14px;
+}
+.section.slim {
+  padding: 4px 0;
+}
+.section .section-title {
+  color: #888;
+  margin-bottom: 8px;
+  font-size: .8em;
+  text-transform: uppercase;
+}
+.section .section-title.slim {
+  margin-bottom: 0;
+}
+.section .detail-info {
+  margin: 8px 0;
+}
+.section .detail-info.slim {
+  margin: 0;
+}
+.section .detail-info span[flex]:first-child {
+  color: #555;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.section .detail-info span[flex]:nth-child(2) {
+  color: #888;
+}
+@media (max-width: 600px) {
+  .section .detail-info span:not(first-child) {
+    margin-top: 8px;
+  }
+}

@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <base href="/">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+  <!--vendor:css-->
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+  <!-- endinject -->
+
+  <!-- app:css -->
+  <link rel="stylesheet" href="styles/app.css">
+  <!-- endinject -->
+</head>
+<body ng-app="vendorAppApp" ng-controller="AppController as appController" layout="column">
+
+<!--[if lt IE 9]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+  your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<main-menu ng-show="appController.isLoggedIn()"></main-menu>
+
+<!-- Add your site or application content here -->
+<main ng-cloak layout="column" layout-fill ui-view></main>
+
+<script src="socket.io-client/socket.io.js"></script>
+
+<!-- vendor:js -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/material-design-icons/index.js"></script>
+<script src="bower_components/lodash/dist/lodash.compat.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-socket-io/socket.js"></script>
+<script src="bower_components/moment/moment.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="bower_components/angular-moment/angular-moment.js"></script>
+<!-- endinject -->
+
+<!-- vendor js customization -->
+<!-- end vendor js customization -->
+
+<!-- app:js -->
+<script src="app/admin/user/list/edit/edit.js"></script>
+<script src="app/admin/user/list/edit/edit-password/edit-password.controller.js"></script>
+<script src="app/admin/user/list/items/items.js"></script>
+<script src="app/admin/user/list/items/items.controller.js"></script>
+<script src="app/admin/user/list/edit/edit.controller.js"></script>
+<script src="app/admin/user/list/detail/detail.js"></script>
+<script src="app/admin/user/list/detail/detail.controller.js"></script>
+<script src="app/app.js"></script>
+<script src="app/components/model-input-group/model-input/model-input.directive.js"></script>
+<script src="app/admin/user/list/list.js"></script>
+<script src="app/admin/user/list/list.controller.js"></script>
+<script src="app/admin/user/create/create.js"></script>
+<script src="app/admin/user/create/create.controller.js"></script>
+<script src="app/components/toggle-component/toggle-component.js"></script>
+<script src="app/components/toggle-component/toggle-component.service.js"></script>
+<script src="app/components/toggle-component/toggle-component.directive.js"></script>
+<script src="app/components/toast/toast.service.js"></script>
+<script src="app/components/socket/socket.service.js"></script>
+<script src="app/components/resource/resource.service.js"></script>
+<script src="app/components/repeat-input/repeat-input.directive.js"></script>
+<script src="app/components/remote-unique/remote-unique.directive.js"></script>
+<script src="app/components/mongoose-error/mongoose-error.directive.js"></script>
+<script src="app/components/model-input-group/model-input-group.directive.js"></script>
+<script src="app/components/model-definitions/model-definitions.service.js"></script>
+<script src="app/components/main-menu/main-menu.js"></script>
+<script src="app/components/main-menu/main-menu.service.js"></script>
+<script src="app/components/main-menu/main-menu.directive.js"></script>
+<script src="app/components/main-menu/main-menu.controller.js"></script>
+<script src="app/components/lodash/lodash.service.js"></script>
+<script src="app/components/list-image/list-image.directive.js"></script>
+<script src="app/components/io/io.service.js"></script>
+<script src="app/components/auth/user.service.js"></script>
+<script src="app/components/auth/authinterceptor.service.js"></script>
+<script src="app/components/auth/auth.service.js"></script>
+<script src="app/admin/user/user.js"></script>
+<script src="app/admin/user/user.controller.js"></script>
+<script src="app/admin/main/main.js"></script>
+<script src="app/admin/main/main.controller.js"></script>
+<script src="app/account/account.js"></script>
+<script src="app/account/settings/settings.controller.js"></script>
+<script src="app/account/login/login.controller.js"></script>
+<script src="app/main/main.js"></script>
+<script src="app/main/main.controller.js"></script>
+<script src="app/admin/admin.js"></script>
+<script src="app/admin/admin.controller.js"></script>
+<script src="app/app.controller.js"></script>
+<!-- endinject -->
+
+</body>
+</html>
