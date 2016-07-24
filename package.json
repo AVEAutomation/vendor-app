@@ -1,8 +1,8 @@
 {
   "name": "vendor-app",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Generated vendorApp app.",
-  "main": "server/index.js",
+  "main": "server/app.js",
   "private": true,
   "dependencies": {
     "express": "~4.9.0",
