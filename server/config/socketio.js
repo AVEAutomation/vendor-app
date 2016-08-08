@@ -28,6 +28,9 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+require('../api/lot/lot.socket').register(socket);
+require('../api/customer/customer.socket').register(socket);
+require('../api/shipment/shipment.socket').register(socket);
   require('../api/user/user.socket').register(socket);
 }
 

@@ -45,6 +45,7 @@ function initExpress(app) {
   app.use(passport.initialize());
   app.use(favicon(path.join(publicDir, 'favicon.ico')));
 
+  console.log('publicDir: ' + publicDir)
   if ('production' === env) {
     app.use(express.static(publicDir));
     app.set('appPath', publicDir);

@@ -29,7 +29,10 @@
       "vendorAppApp.auth",
       "vendorAppApp.admin",
       "vendorAppApp.account",
-      "vendorAppApp.main"
+      "vendorAppApp.main",
+      "vendorAppApp.shipment",
+      "vendorAppApp.customer",
+      "vendorAppApp.lot"
     ],
     "componentsDirectory": "client/app/components/",
     "routeDirectory": "client/app/",

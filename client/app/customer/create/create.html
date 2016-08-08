@@ -1,0 +1,53 @@
+<md-dialog aria-label="Create a new customer" id="customer-create">
+
+  <md-toolbar class="md-accent">
+    <h3 class="md-toolbar-tools">
+      Create a new customer
+    </h3>
+  </md-toolbar>
+
+  <md-content>
+    <section class="section slim" layout="column">
+      <p>
+          Create a new customer for your application.
+      </p>
+    </section>
+
+    <form name="createForm">
+
+      <section class="section slim" layout="column">
+        <span layout="row" layout-align="start center">
+          <span flex="33">Customer is active</span>
+          <md-switch name="active" class="no-label" aria-label="customer active" ng-model="create.customer.active"></md-switch>
+        </span>
+      </section>
+
+      <section class="section" layout="column">
+
+        <!--<span layout="row" layout-sm="column">
+          <md-input-container flex>
+            <label>Name</label>
+            <input name="name" ng-model="create.customer.name"
+                   ng-model-options="{updateOn: 'default blur', debounce: {'default': 500, 'blur': 0}}"
+                   required mongoose-error remote-unique="Customer">
+            <div ng-messages="createForm.name.$error">
+              <div ng-message="required">Name is required</div>
+              <div ng-message="mongoose">Name already in use</div>
+              <div ng-message="remote-unique">Name already in use</div>
+            </div>
+          </md-input-container>
+        </span>-->
+
+        <model-input-group ng-model="create.customer" field-definitions="create.customerDefinition"></model-input-group>
+
+      </section>
+    </form>
+  </md-content>
+
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="create.close()">Cancel</md-button>
+    <md-button ng-disabled="createForm.$invalid" ng-click="create.create(createForm)" class="md-primary md-raised">Create customer</md-button>
+  </div>
+
+</md-dialog>

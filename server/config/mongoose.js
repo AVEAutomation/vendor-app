@@ -6,6 +6,9 @@
 'use strict';
 
 var mongoose = require('mongoose');
+// Will add the Currency type to the Mongoose Schema types
+require('mongoose-currency').loadType(mongoose);
+
 var config = require('./index');
 
 // connect to mongodb

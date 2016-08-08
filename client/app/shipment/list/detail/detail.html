@@ -1,0 +1,62 @@
+<md-toolbar class="md-hue-1 md-tall" id="shipment-detail-toolbar">
+
+  <span layout="row" layout-align="space-between" class="md-toolbar-tools md-toolbar-tools-top">
+    <md-button ng-click="detail.goBack()" aria-label="Close detail view">
+      <md-icon md-svg-icon="navigation:ic_close_24px"></md-icon>
+    </md-button>
+    <md-button ng-click="detail.edit()" aria-label="Edit shipment">
+      <md-icon md-svg-icon="content:ic_create_24px"></md-icon>
+    </md-button>
+  </span>
+
+  <span class="md-toolbar-tools md-toolbar-tools-bottom" layout="column">
+    <h3>{{::detail.shipment.name}}</h3>
+  </span>
+
+</md-toolbar>
+
+<md-content class="md-padding" flex id="shipment-detail-content">
+
+  <section class="section" layout="column">
+
+    <span class="section-title">Shipment data</span>
+
+    <span layout="row" layout-align="start center" class="detail-info" ng-hide="detail.shipment.active">
+      <span flex>This shipment is not active</span>
+    </span>
+
+    <span ng-repeat="propDef in index.shipmentDefinition" layout="row" layout-sm="column" class="detail-info">
+      <span flex="45">{{::propDef.desc}}</span>
+      <span flex>{{
+        ::applyFilter(
+          index.ModelDefinitions.get(detail.shipment, propDef.name),
+          propDef.ngFilter
+        )}}
+      </span>
+    </span>
+
+  </section>
+
+  <section class="section" layout="column">
+
+    <span class="section-title">Record Information</span>
+
+    <span layout="row" layout-sm="column" class="detail-info">
+      <span flex="45">Modified</span>
+      <span flex ng-show="detail.shipment.modified" class="subtitle">
+        <span am-time-ago="detail.shipment.modified"></span>
+        <md-tooltip>{{detail.shipment.modified | date:'dd. MMMM yyyy H:mm'}}</md-tooltip>
+        {{detail.shipment.modifiedBy && 'by ' + detail.shipment.modifiedBy}}
+      </span>
+    </span>
+
+    <span layout="row" layout-sm="column" class="detail-info">
+      <span flex="45">Created</span>
+      <span flex ng-show="detail.shipment.created" class="subtitle">{{detail.shipment.created | date:'dd. MMMM yyyy H:mm'}}</span>
+    </span>
+
+  </section>
+
+</md-content>
+
+

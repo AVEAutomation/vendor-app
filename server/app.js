@@ -8,6 +8,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var express = require('express');
 var socketio = require('socket.io');
+// var request = require('request');
 var config = require('./config/index');
 var socketConfig = require('./config/socketio');
 var db = require('./config/mongoose');
@@ -25,6 +26,9 @@ require('./config/express')(app);
 
 // Setup Routes
 require('./routes')(app);
+
+// Setup Request
+// require('./config/request')(request);
 
 // register the shutdown handler to close the database connection on interrupt signals
 process
@@ -45,6 +49,7 @@ function startServer() {
   });
   // Setup SocketIO
   socketConfig(socket);
+  // TODO: add scraper server config in here
   return server;
 }
 

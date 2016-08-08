@@ -1,0 +1,62 @@
+<md-toolbar class="md-hue-1 md-tall" id="customer-detail-toolbar">
+
+  <span layout="row" layout-align="space-between" class="md-toolbar-tools md-toolbar-tools-top">
+    <md-button ng-click="detail.goBack()" aria-label="Close detail view">
+      <md-icon md-svg-icon="navigation:ic_close_24px"></md-icon>
+    </md-button>
+    <md-button ng-click="detail.edit()" aria-label="Edit customer">
+      <md-icon md-svg-icon="content:ic_create_24px"></md-icon>
+    </md-button>
+  </span>
+
+  <span class="md-toolbar-tools md-toolbar-tools-bottom" layout="column">
+    <h3>{{::detail.customer.name}}</h3>
+  </span>
+
+</md-toolbar>
+
+<md-content class="md-padding" flex id="customer-detail-content">
+
+  <section class="section" layout="column">
+
+    <span class="section-title">Customer data</span>
+
+    <span layout="row" layout-align="start center" class="detail-info" ng-hide="detail.customer.active">
+      <span flex>This customer is not active</span>
+    </span>
+
+    <span ng-repeat="propDef in index.customerDefinition" layout="row" layout-sm="column" class="detail-info">
+      <span flex="45">{{::propDef.desc}}</span>
+      <span flex>{{
+        ::applyFilter(
+          index.ModelDefinitions.get(detail.customer, propDef.name),
+          propDef.ngFilter
+        )}}
+      </span>
+    </span>
+
+  </section>
+
+  <section class="section" layout="column">
+
+    <span class="section-title">Record Information</span>
+
+    <span layout="row" layout-sm="column" class="detail-info">
+      <span flex="45">Modified</span>
+      <span flex ng-show="detail.customer.modified" class="subtitle">
+        <span am-time-ago="detail.customer.modified"></span>
+        <md-tooltip>{{detail.customer.modified | date:'dd. MMMM yyyy H:mm'}}</md-tooltip>
+        {{detail.customer.modifiedBy && 'by ' + detail.customer.modifiedBy}}
+      </span>
+    </span>
+
+    <span layout="row" layout-sm="column" class="detail-info">
+      <span flex="45">Created</span>
+      <span flex ng-show="detail.customer.created" class="subtitle">{{detail.customer.created | date:'dd. MMMM yyyy H:mm'}}</span>
+    </span>
+
+  </section>
+
+</md-content>
+
+

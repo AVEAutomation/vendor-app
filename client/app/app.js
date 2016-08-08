@@ -11,6 +11,9 @@
   angular
     .module('vendorAppApp', [
       // Add modules below
+'vendorAppApp.lot',
+'vendorAppApp.customer',
+'vendorAppApp.shipment',
       'ngCookies',
       'ngResource',
       'ngSanitize',
