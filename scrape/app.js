@@ -21,8 +21,13 @@ request = request.defaults({
   followAllRedirects: true   // allow redirections
 });
 var urls = {
+  base: 'https://vendorexpress.amazon.com/',
   orders: 'https://vendorexpress.amazon.com/orders'
 };
+
+var suffixes = {
+  orders: 'dfOrders'
+}
 // Assemble headers for requests
 var headers = {'Cookie': ''};
 fs.readFile('./data/cookieString.txt', function(err, data) {
