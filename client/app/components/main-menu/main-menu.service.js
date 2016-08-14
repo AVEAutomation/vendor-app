@@ -67,8 +67,13 @@
      * @param {*} menuData The menu data to add
      */
     function addSubMenuItem(parent, menuData) {
-      var menuItem = _.find(menu, {state: parent});
-      if (menuItem) {
+      var menuNdx = -1;
+      menu.forEach(function(elt, i) {
+        if (elt.state === parent) {
+          menuNdx = i;
+        }});
+      if (menuNdx > -1) {
+        var menuItem = menu[menuNdx];
         menuItem.subItems = menuItem.subItems || [];
         menuItem.subItems.push(menuData);
       }

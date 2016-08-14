@@ -59,8 +59,9 @@ var conf = {
       },
       unitTests: ['client/app/**/*.spec.js'],
       mocks: [
-        'client/app/**/*.mock.js',
-        'client/bower_components/angular-mocks/angular-mocks.js'
+        'client/bower_components/angular/angular.js',
+        'client/bower_components/angular-mocks/angular-mocks.js',
+        'client/app/**/*.mock.js'
       ],
       bower: bowerFiles
     },
@@ -106,7 +107,7 @@ var conf = {
       appFiles: [
         'app/**/*.js',
         'bower_components/should/should.js',
-        'bower_components/sinonjs/sinon.js'
+        'bower_components/sinon/lib/sinon.js'
       ]
     },
     mocha: {
@@ -159,18 +160,19 @@ conf.targets.html.path = path.join(conf.targets.html.dir, conf.targets.html.file
 // rewrite absolute paths for karma, options doesn't work?
 conf.options.karma.files = (
   conf.src.client.bower.map(function (e) { // rewrite absolute file system paths
-    return e.substr(e.indexOf('bower_components') - 1);
-  })
+      return path.join(rootPath, './client' + e.substr(e.indexOf('bower_components') - 1));
+    }).filter(function(p) {return p.indexOf('material-design-icons') < 0})
     .concat(conf.src.client.mocks)
     .concat(conf.src.client.unitTests)
     .concat(conf.options.karma.appFiles)
 ).map(function (e) {
     if (e.indexOf(conf.options.karma.basePath) === 0) {
       e = e.substr(conf.options.karma.basePath.length);
+      e =  path.join(rootPath, './client/' + e);
     }
 
     if (e.indexOf('/') === 0) {
-      return e.substr(1);
+      // return e.substr(1);
     }
 
     return e;

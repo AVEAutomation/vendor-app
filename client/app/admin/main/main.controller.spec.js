@@ -23,11 +23,11 @@ describe('Controller: AdminMainController', function () {
 
   it('should have an awesome title property', function () {
     Should.exist(controller.title);
-    controller.title.should.equal('user');
+    controller.title.should.equal('Administration');
   });
 
-  it('should have a working doSomething method', function () {
-    Should.exist(controller.doSomething);
-    controller.doSomething().should.equal('user - a sublime controller');
-  });
+  // it('should have a working doSomething method', function () {
+  //   Should.exist(controller.doSomething);
+  //   controller.doSomething().should.equal('user - a sublime controller');
+  // });
 });

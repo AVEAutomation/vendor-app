@@ -22,7 +22,7 @@
     delete $window._;
 
     // mixin functions
-    _.mixin({'groupFilter': groupFilter});
+    // _.mixin({'groupFilter': groupFilter});
 
     return _;
 

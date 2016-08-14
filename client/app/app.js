@@ -11,9 +11,7 @@
   angular
     .module('vendorAppApp', [
       // Add modules below
-'vendorAppApp.lot',
-'vendorAppApp.customer',
-'vendorAppApp.shipment',
+
       'ngCookies',
       'ngResource',
       'ngSanitize',
@@ -29,8 +27,12 @@
       'vendorAppApp.admin',
       'vendorAppApp.account',
       'vendorAppApp.main',
+      'vendorAppApp.lot',
+'vendorAppApp.customer',
+'vendorAppApp.shipment',
     ])
     .config(appConfig)
+    // .constant('_', window._)
     .run(appRun);
 
   /* App configuration */
