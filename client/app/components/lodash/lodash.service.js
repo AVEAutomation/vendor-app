@@ -19,7 +19,7 @@
   function LodashService($window) {
     // remove lodash from global object
     var _ = $window._;
-    delete $window._;
+    delete ($window._);
 
     // mixin functions
     // _.mixin({'groupFilter': groupFilter});

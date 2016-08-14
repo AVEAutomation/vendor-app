@@ -81,7 +81,7 @@
   /* App run bootstrap */
 
   // add appConfig dependencies to inject
-  appRun.$inject = ['$rootScope', '$location', 'Auth'];
+  appRun.$inject = ['$rootScope', '$location', 'Auth', '_'];
 
   /**
    * Application run function
@@ -90,7 +90,7 @@
    * @param $location
    * @param Auth
    */
-  function appRun($rootScope, $location, Auth) {
+  function appRun($rootScope, $location, Auth, _) {
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
       if (!next.authenticate) {
