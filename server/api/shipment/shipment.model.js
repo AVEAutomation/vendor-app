@@ -15,7 +15,7 @@ var Currency = mongoose.Types.Currency, ObjectId = mongoose.Schema.Types.ObjectI
 /**
  * The Shipment model definition
  * @type {Object}
- * @property {String} name - The name of this shipment
+ * @property {String} shipmentId - The AVE id of this shipment
  * @property {String} info - Details about this shipment
  * @property {Boolean} active - Flag indicating this shipment is active
  */

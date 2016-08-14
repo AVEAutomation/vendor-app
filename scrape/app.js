@@ -9,6 +9,8 @@ var request = require('request');
 var cheerio = require('cheerio');
 var _ = require('lodash');
 var app = express();
+var tough = require('tough-cookie');
+var Cookie = tough.Cookie;
 var FileCookieStore = require('tough-cookie-filestore');
 // NOTE - currently the 'cookies.json' file must already exist!
 var cookieStore = new FileCookieStore('data/cookies.json');
@@ -26,19 +28,20 @@ var urls = {
 };
 
 var suffixes = {
-  orders: 'dfOrders'
+  order: 'dfOrders/',
+  printLabel: 'dfOrders/printShipmentLabels/'
 }
 // Assemble headers for requests
 var headers = {'Cookie': ''};
-fs.readFile('./data/cookieString.txt', function(err, data) {
-  if (err) {
-    console.log('CookieString.txt read error: ' + err + '\nMake sure the file exists')
-  } else {
-    headers.Cookie = data;
-    // console.log('cookieStr contents: ' + headers.Cookie);
-    request.get({url: urls.orders, headers: headers, jar: j}, scrapeOrders);
-  }
-})
+// fs.readFile('./data/cookieString.txt', function(err, data) {
+//   if (err) {
+//     console.log('CookieString.txt read error: ' + err + '\nMake sure the file exists')
+//   } else {
+//     headers.Cookie = data;
+//     // console.log('cookieStr contents: ' + headers.Cookie);
+//     request.get({url: urls.orders, headers: headers, jar: j}, scrapeOrders);
+//   }
+// })
 
 var user = process.env.AVE_ACCOUNT;
 var pass = process.env.AVE_ACCOUNT_PW;
@@ -59,9 +62,35 @@ app.get('/scrape', function(req, res){
   // The callback function takes 3 parameters, an error, response status code and the html
 
   // console.log('requesting orders url, headers: ' + JSON.stringify(headers));
-  request.get({url: urls.orders, headers: headers, jar: j}, scrapeOrders);
-
+  // request.get({url: urls.orders, headers: headers, jar: j}, scrapeOrders);
+  checkForLogin(req, res, urls.orders, scrapeOrders);
 });
+
+function setHeaderCookie(response) {
+  var cookies = [];
+  if (response.headers['set-cookie'] instanceof Array)
+    cookies = response.headers['set-cookie'].map(Cookie.parse);
+  else
+    cookies = [Cookie.parse(response.headers['set-cookie'])];
+  cookies.forEach(function(c) {
+    var cookieStr = c.toString();
+    console.log('setting cookieStr: ' + cookieStr);
+    headers.Cookie += cookieStr;
+    // j.setCookie(c.domain, c.value);
+  });
+}
+
+// TODO: complete function
+function scrapeShippingLabel(orderId) {
+  var url = urls.base + suffixes.printLabel + orderId;
+
+}
+// TODO: complete function
+function scrapeCustomerData(orderId) {
+  var url = urls.base + suffixes.order + orderId;
+
+}
+
 
 // TODO: give only the cheerio object
 function scrapeOrders(error, response, html) {
@@ -87,7 +116,7 @@ function scrapeOrders(error, response, html) {
     if (orders.length) {
       console.log('orders: ' + JSON.stringify(orders));
     } else {
-      console.log('no orders scraped, html: ' + html)
+      console.log('no orders scraped, response headers: ' + JSON.stringify(response.headers))
     }
     // TODO: if next page exists, go there. 
   } else {
@@ -100,13 +129,12 @@ function checkForLogin(req, res, url, cb) {
 
       // First we'll check to make sure no errors occurred when making the request
 
-      if(!error && response.statusCode == 200){
-          // Next, we'll utilize the cheerio library on the returned html which will essentially give us jQuery functionality
+      if(!error){
           console.log('response headers: ' + JSON.stringify(response.headers));
 
           var $ = cheerio.load(html);
           var form = $('form[name=signIn]');
-          var json = {};
+          var json = {}, cookies = [];
           var action = form.attr('action'), formArr = form.serializeArray();
           
           if (formArr) {
@@ -132,20 +160,35 @@ function checkForLogin(req, res, url, cb) {
             json.email = user;
             json.password = pass;
             console.log('posting following formData: ' + JSON.stringify(json));
+            // TODO: for val in response.headers.set-cookie, setCookie(val.Domain)(val.)
+            // below taken from npm page for cookie
+            setHeaderCookie(response);
+            // console.log('pre-login cookie: ' + JSON.stringify(j.getCookies()));
+              
             // Post this to action, with username and password fields
-            // request.post({url: action, formData: json, jar: j}, function(err, response, html){
-            //   console.log('post-login response: ' + JSON.stringify(response));
-            //   console.log('post-login cookie: ' + JSON.stringify(j.getCookies()));
-            // });
-            // request({url: url, jar: j}, cb);
+            request.post({url: action, headers: headers, formData: json, jar: j}, function(err, response, html){
+              // console.log('post-login response headers: ' + JSON.stringify(response.headers));
+              setHeaderCookie(response);
+              console.log('post-login header: ' + JSON.stringify(headers));
+              // headers.Cookie = response.headers.cookie;
+              request.post({url: action, headers: headers, formData: json, jar: j}, function(err, response) {
+                request({url: url, headers: headers, jar: j}, cb);
+                res.send(response);
+              })
+              
+            }, function(err) {
+              res.send({'error': err});
+            });
+            // 
           } else {
             cb(error, response, html);
           }
           
-          res.status(200).end();
-      } else if (!error) {
+          // res.status(200).end();
+      } else {
 
-        console.log(html);
+        console.log('error response, headers: ' + JSON.stringify(response.headers));
+        res.send(response);
       }
   }
   request({url: url, jar: j}, reqUrl);

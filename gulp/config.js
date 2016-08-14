@@ -75,7 +75,7 @@ var conf = {
     },
     sass: {
       style: 'expanded',
-      'sourcemap': false
+      'sourcemap=none': true
     },
     autoprefixer: {
       browsers: ['> 10%', 'IE 9'],
