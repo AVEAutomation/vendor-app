@@ -1,4 +1,6 @@
 node_modules
 build
 dist
-client/bower_components
+bower_components/
+.sass-cache
+data
