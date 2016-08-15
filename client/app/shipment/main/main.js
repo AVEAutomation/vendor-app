@@ -37,7 +37,7 @@
       role: 'user',
       views: {
         '@shipment': {
-          templateUrl: 'app\shipment\main\main.html',
+          templateUrl: 'app/shipment/main/main.html',
           controller: 'ShipmentMainController',
           controllerAs: 'main'
         }

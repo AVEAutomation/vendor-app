@@ -18,6 +18,9 @@
   function ShipmentItemsController($state) {
     var vm = this;
 
+    // The title
+    vm.title = 'Shipments List';
+
     // the selected item id
     var curShipmentId = null;
 

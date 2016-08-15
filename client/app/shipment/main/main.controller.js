@@ -19,7 +19,7 @@
     var vm = this;
     // switch to the list state
     vm.showList = showList;
-
+    vm.title = 'Shipments'
     /**
      * Activate the shipment.list state
      */

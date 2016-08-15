@@ -44,7 +44,7 @@
       onEnter: onEnterShipmentListEdit,
       views: {
         'detail@shipment.list': {
-          templateUrl: 'app\shipment\list\edit\edit.html',
+          templateUrl: 'app/shipment/list/edit/edit.html',
           controller: 'ShipmentEditController',
           controllerAs: 'edit',
           resolve: {shipment: resolveShipmentFromArray}

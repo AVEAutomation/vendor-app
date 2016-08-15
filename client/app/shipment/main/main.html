@@ -1,17 +1,14 @@
 <section id="shipment-main-content" layout="column" layout-fill flex>
 
-    <md-toolbar class="md-tall" scroll-shrink>
-    <span class="md-toolbar-tools md-toolbar-tools-top">
-      <md-button ng-click="appController.openMainMenu()" aria-label="Open main menu">
-                <md-icon md-svg-icon="navigation:ic_menu_24px"></md-icon>
-            </md-button>
-    </span>
-
-        <span flex></span>
-
-        <h2 class="md-toolbar-tools md-toolbar-tools-bottom">
-            <span>Shipments</span>
-        </h2>
+    <md-toolbar layout="row" scroll-shrink>
+      <span class="md-toolbar-tools md-toolbar-tools-top" flex layout="row">
+        <md-button ng-click="appController.openMainMenu()" aria-label="Open main menu">
+          <md-icon md-svg-icon="navigation:ic_menu_24px"></md-icon>
+        </md-button>
+      </span>
+      <span class="md-toolbar-tools md-toolbar-tools-bottom" flex layout="row">
+        <h2>{{vm.title}}</h2>
+      </span>
     </md-toolbar>
 
     <md-content>
@@ -24,7 +21,7 @@
 
                 <p>
                     View your <a ui-sref="shipment.list">list of Shipments</a>
-                    or <a ui-sref="shipment.list.create">create a Shipment</a>.
+                    or (Coming soon!) scrape more shipments.
                 </p>
             </md-card-content>
         </md-card>

@@ -40,7 +40,7 @@
       onEnter: onEnterShipmentListDetail,
       views: {
         'detail@shipment.list': {
-          templateUrl: 'app\shipment\list\detail\detail.html',
+          templateUrl: 'app/shipment/list/detail/detail.html',
           controller: 'ShipmentDetailController',
           controllerAs: 'detail',
           resolve: {shipment: resolveShipmentFromArray}

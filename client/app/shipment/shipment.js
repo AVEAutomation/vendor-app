@@ -39,7 +39,7 @@
       name: 'shipment',
       url: '/shipment',
       abstract: true,
-      templateUrl: 'app\shipment\shipment.html',
+      templateUrl: 'app/shipment/shipment.html',
       controller: 'ShipmentController',
       controllerAs: 'index'
     };

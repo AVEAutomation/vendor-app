@@ -9,15 +9,15 @@
   <span flex></span>
 
   <h2 class="md-toolbar-tools md-toolbar-tools-bottom toolbar-tools-fab-overlap">
-    <span>Shipments List</span>
+    <span>{{vm.title}}</span>
   </h2>
-
+<!-- 
   <a ui-sref="shipment.list.create">
     <md-button hide show-gt-md ng-if="list.shipments.length" class="md-fab md-accent md-fab-top-left fab-overlap" aria-label="Create a new shipment">
       <md-icon md-svg-icon="content:ic_add_24px"></md-icon>
     </md-button>
   </a>
-
+ -->
 </md-toolbar>
 
 <md-content ng-if="list.shipments.length" id="shipment-items-content" flex>
@@ -80,15 +80,14 @@
     <md-card-content>
       <h2>No Shipments found</h2>
       <p>
-        There are no Shipments!
-        <a ui-sref="shipment.list.create">Create one!</a>
+        There are no Shipments! Please wait for our scrapers to fetch shipment data.
       </p>
     </md-card-content>
   </md-card>
 </md-content>
 
-<a ui-sref="shipment.list.create">
+<!-- <a ui-sref="shipment.list.create">
   <md-button hide-gt-md ui-sref="shipment.list.create" class="md-fab md-accent md-fab-bottom-right" aria-label="Create a new shipment">
     <md-icon md-svg-icon="content:ic_add_24px"></md-icon>
   </md-button>
-</a>
+</a> -->

@@ -40,13 +40,13 @@
   function ShipmentService(Shipment) {
 
     return {
-      create: create,
+      // create: create,
       update: update,
       remove: remove
     };
 
     /**
-     * Save a new shipment
+     * Create a new shipment
      *
      * @param  {Object}   shipment - shipmentData
      * @param  {Function} callback - optional

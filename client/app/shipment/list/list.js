@@ -52,14 +52,14 @@
 
         // target the unnamed view in the shipment state
         '@shipment': {
-          templateUrl: 'app\shipment\list\list.html',
+          templateUrl: 'app/shipment/list/list.html',
           controller: 'ShipmentListController',
           controllerAs: 'list'
         },
 
         // target the content view in the shipment.list state
         'content@shipment.list': {
-          templateUrl: 'app\shipment\list\items\items.html',
+          templateUrl: 'app/shipment/list/items/items.html',
           controller: 'ShipmentItemsController',
           controllerAs: 'items'
         }
