@@ -4,34 +4,35 @@
 var should = require('should');
 var app = require('../../app');
 var request = require('supertest');
-var customerModel = require('./customer.model');
+var productModel = require('./product.model');
 var seed = require('../../config/seed');
-seed = seed.customers;
-// Clear all customers
+seed = seed.products;
+
+// Clear all products
 function cleanup(done) {
-  customerModel.model.remove().exec().then(function () { done();  });
+  productModel.model.remove().exec().then(function () { done();  });
 }
 
-describe('/api/customers', function () {
+describe('/api/products', function () {
 
-  var customer;
+  var product;
 
-  // reset customer before each test
+  // reset product before each test
   beforeEach(function () {
-    customer = seed[0];
+    product = seed[0];
   });
 
-  // Clear customers before each test
+  // Clear products before each test
   beforeEach(cleanup);
 
-  // Clear customers after each test
+  // Clear products after each test
   afterEach(cleanup);
 
   describe('GET', function () {
 
     it('should respond with JSON array', function (done) {
       request(app)
-        .get('/api/customers')
+        .get('/api/products')
         .set('Accept', 'application/json')
         .expect(200)
         .expect('Content-Type', /json/)
@@ -44,28 +45,28 @@ describe('/api/customers', function () {
         });
     });
 
-    it('should respond with an error for a malformed customer id parameter', function (done) {
+    it('should respond with an error for a malformed product id parameter', function (done) {
       request(app)
-        .get('/api/customers/malformedid')
+        .get('/api/products/malformedid')
         .set('Accept', 'application/json')
         .expect(400)
         .expect('Content-Type', /json/)
         .end(done);
     });
 
-    it('should respond with an not found error for a not existing customer id', function (done) {
+    it('should respond with an not found error for a not existing product id', function (done) {
       request(app)
-        .get('/api/customers/cccccccccccccccccccccccc')
+        .get('/api/products/cccccccccccccccccccccccc')
         .set('Accept', 'application/json')
         .expect(404)
         .expect('Content-Type', /json/)
         .end(done);
     });
 
-    it('should return a customer for its id', function (done) {
-      customerModel.model(customer).save(function (err, doc) {
+    it('should return a product for its id', function (done) {
+      productModel.model(product).save(function (err, doc) {
         request(app)
-          .get('/api/customers/' + doc._id)
+          .get('/api/products/' + doc._id)
           .set('Accept', 'application/json')
           .expect(200)
           .expect('Content-Type', /json/)
@@ -73,7 +74,7 @@ describe('/api/customers', function () {
             if (err) {
               return done(err);
             }
-            res.body.should.be.an.Object.and.have.properties(customer);
+            res.body.should.be.an.Object.and.have.properties(product);
             res.body._id.should.exist;
             done();
           });
@@ -84,18 +85,18 @@ describe('/api/customers', function () {
 
   describe('POST', function () {
 
-    it('should create a new customer and respond with 201 and the created customer', function (done) {
+    it('should create a new product and respond with 201 and the created product', function (done) {
       request(app)
-        .post('/api/customers')
+        .post('/api/products')
         .set('Accept', 'application/json')
-        .send(customer)
+        .send(product)
         .expect(201)
         .expect('Content-Type', /json/)
         .end(function (err, res) {
           if (err) {
             return done(err);
           }
-          res.body.should.be.an.Object.and.have.properties(customer);
+          res.body.should.be.an.Object.and.have.properties(product);
           res.body._id.should.exist;
           done();
         });
@@ -107,45 +108,45 @@ describe('/api/customers', function () {
 
     it('should return an error if attempting a put without an id', function (done) {
       request(app)
-        .put('/api/customers')
+        .put('/api/products')
         .set('Accept', 'application/json')
-        .send(customer)
+        .send(product)
         .expect(404)
         .end(done);
     });
 
-    it('should respond with an not found error for a not existing customer id', function (done) {
+    it('should respond with an not found error for a not existing product id', function (done) {
       request(app)
-        .put('/api/customers/cccccccccccccccccccccccc')
+        .put('/api/products/cccccccccccccccccccccccc')
         .set('Accept', 'application/json')
         .expect(404)
         .expect('Content-Type', /json/)
         .end(done);
     });
 
-    it('should update a customer and respond with the updated customer', function (done) {
+    it('should update a product and respond with the updated product', function (done) {
       request(app)
-        .post('/api/customers')
+        .post('/api/products')
         .set('Accept', 'application/json')
-        .send(customer)
+        .send(product)
         .end(function (err, res) {
           if (err) {
             return done(err);
           }
-          customer.name = 'Cat';
+          product.name = 'Cat';
           // check if id is stripped on update
-          customer._id = 'malformed id string';
+          product._id = 'malformed id string';
           request(app)
-            .put('/api/customers/' + res.body._id)
+            .put('/api/products/' + res.body._id)
             .set('Accept', 'application/json')
-            .send(customer)
+            .send(product)
             .expect(200)
             .expect('Content-Type', /json/)
             .end(function (err, res) {
               if (err) {
                 return done(err);
               }
-              res.body.should.be.an.Object.and.have.property('name', customer.name);
+              res.body.should.be.an.Object.and.have.property('name', product.name);
               done();
             });
         });
@@ -157,32 +158,32 @@ describe('/api/customers', function () {
 
     it('should return an error if attempting a delete without an id', function (done) {
       request(app)
-        .delete('/api/customers')
+        .delete('/api/products')
         .set('Accept', 'application/json')
         .expect(404)
         .end(done);
     });
 
-    it('should respond with an not found error for a not existing customer id', function (done) {
+    it('should respond with an not found error for a not existing product id', function (done) {
       request(app)
-        .delete('/api/customers/cccccccccccccccccccccccc')
+        .delete('/api/products/cccccccccccccccccccccccc')
         .set('Accept', 'application/json')
         .expect(404)
         .expect('Content-Type', /json/)
         .end(done);
     });
 
-    it('should delete a customer and respond with 204', function (done) {
+    it('should delete a product and respond with 204', function (done) {
       request(app)
-        .post('/api/customers')
+        .post('/api/products')
         .set('Accept', 'application/json')
-        .send(customer)
+        .send(product)
         .end(function (err, res) {
           if (err) {
             return done(err);
           }
           request(app)
-            .delete('/api/customers/' + res.body._id)
+            .delete('/api/products/' + res.body._id)
             .set('Accept', 'application/json')
             .expect(204)
             .end(done);

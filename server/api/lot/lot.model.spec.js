@@ -2,20 +2,14 @@
 'use strict';
 
 var should = require('should');
+var seed = require('../../config/seed');
 
 var lot = require('./lot.model');
 var lotDefinition = lot.definition;
 var lotSchema= lot.schema;
 var Lot = lot.model;
 
-var lotData = [
-  {
-    shipments: [3]
-  },
-  {
-    shipments: [4]
-  }
-];
+var lotData = seed.lots;
 
 // Clear all lots
 function cleanup(done) {

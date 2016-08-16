@@ -2,32 +2,14 @@
 'use strict';
 
 var should = require('should');
+var seed = require('../../config/seed');
 
 var customer = require('./customer.model');
 var customerDefinition = customer.definition;
 var customerSchema= customer.schema;
 var Customer = customer.model;
 
-var customerData = [
-  {
-    name: 'Amazon Locker - Hannah',
-    address: {
-      street: '12355 15th Ave NE at 7-Eleven',
-      city: 'Seattle',
-      state: 'WA',
-      zip: '98125-4819'
-    }
-  },
-  { //TODO: use actual scraped data below
-    name: 'Amazon Locker - George',
-    address: {
-      street: '12355 15th Ave NE at 7-Eleven',
-      city: 'Seattle',
-      state: 'WA',
-      zip: '98125-4819'
-    }
-  }
-];
+var customerData = seed.customers;
 
 // Clear all customers
 function cleanup(done) {

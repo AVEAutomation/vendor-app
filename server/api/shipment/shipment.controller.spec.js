@@ -5,6 +5,8 @@ var should = require('should');
 var app = require('../../app');
 var request = require('supertest');
 var shipmentModel = require('./shipment.model');
+var seed = require('../../config/seed');
+seed = seed.shipments;
 
 // Clear all shipments
 function cleanup(done) {
@@ -17,16 +19,7 @@ describe('/api/shipments', function () {
 
   // reset shipment before each test
   beforeEach(function () {
-    shipment =  {
-      shipmentId:"DKcRNc7XN",
-      creationDate:"Aug 6, 2016",
-      shipByDate:"Aug 12, 2016",
-      status:"Unshipped",
-      units:1,
-      payments:"$3.92",
-      customer:1, //Hope these vals will be parsed into correct tyeps
-      lotId: null 
-    };
+    shipment = seed[1];
   });
 
   // Clear shipments before each test

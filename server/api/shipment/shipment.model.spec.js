@@ -10,32 +10,35 @@ var Shipment = shipment.model;
 
 var shipmentData = [
   {
-    "shipmentId":"DKcRNc7XN",
+    "orderId":"DKcRNc7XN",
     "creationDate":"Aug 6, 2016",
     "shipByDate":"Aug 12, 2016",
     "status":"Unshipped",
     "units":1,
     "payments":"$3.92",
-    "customer":1, //Hope these vals will be parsed into correct tyeps
-    "lotId": null 
+    "sku": "06F",
+    'product': 1,
+    "customer":1
   }, {
-    "shipmentId":"DplMb07cN",
+    "orderId":"DplMb07cN",
     "creationDate":"Aug 6, 2016",
     "shipByDate":"Aug 12, 2016",
     "status":"Unshipped",
     "units":1,
     "payments":"$6.78",
-    "customer":2,
-    "lotId": null
+    'sku': '12P',
+    'product': 2,
+    "customer":2
   },{
-    "shipmentId":"DpTMbp7bN",
+    "orderId":"DpTMbp7bN",
     "creationDate":"Aug 6, 2016",
     "shipByDate":"Aug 12, 2016",
     "status":"Shipment confirmed",
     "units":1,
     "payments":"$3.92",
-    "customer":3,
-    "lotId": 1
+    "sku": "06F",
+    'product': 1,
+    "customer":3
   }
   // TODO: add 4th shipment to put in lot 2
 ];
@@ -78,6 +81,7 @@ describe('Shipment Model', function () {
     it('should insert a list of shipments', function (done) {
       Shipment.create(shipmentData, function (err, shipment) {
         // slice err argument
+        console.log('shipment return: ' + JSON.stringify(shipment))
         Array.prototype.slice.call(arguments, 1)
           .should.have.lengthOf(shipmentData.length);
         done(err);

@@ -5,7 +5,8 @@ var should = require('should');
 var app = require('../../app');
 var request = require('supertest');
 var lotModel = require('./lot.model');
-
+var seed = require('../../config/seed');
+seed = seed.lots;
 // Clear all lots
 function cleanup(done) {
   lotModel.model.remove().exec().then(function () { done();  });
@@ -17,11 +18,7 @@ describe('/api/lots', function () {
 
   // reset lot before each test
   beforeEach(function () {
-    lot = {
-      name: 'Dog',
-      info: 'Hello, this is dog.',
-      active: true
-    };
+    lot = seed[0];
   });
 
   // Clear lots before each test
