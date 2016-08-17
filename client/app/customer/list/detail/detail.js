@@ -40,7 +40,7 @@
       onEnter: onEnterCustomerListDetail,
       views: {
         'detail@customer.list': {
-          templateUrl: 'app\customer\list\detail\detail.html',
+          templateUrl: 'app/customer/list/detail/detail.html',
           controller: 'CustomerDetailController',
           controllerAs: 'detail',
           resolve: {customer: resolveCustomerFromArray}

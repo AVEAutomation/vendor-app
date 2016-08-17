@@ -31,7 +31,7 @@
    * Route configuration function configuring the passed $stateProvider.
    * Register the 'lot.list.create' state. The onEnterLotListCreateView
    * function will be called when entering the state and open a modal dialog
-   * with the app\lot\create\create.html template loaded.
+   * with the app/lot/create/create.html template loaded.
    *
    * @param {$stateProvider} $stateProvider - The state provider to configure
    */
@@ -61,7 +61,7 @@
     $mdDialog.show({
       controller: 'LotCreateController',
       controllerAs: 'create',
-      templateUrl: 'app\lot\create\create.html',
+      templateUrl: 'app/lot/create/create.html',
       clickOutsideToClose: false
     }).then(transitionTo, transitionTo);
 

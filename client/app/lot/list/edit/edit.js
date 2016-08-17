@@ -44,7 +44,7 @@
       onEnter: onEnterLotListEdit,
       views: {
         'detail@lot.list': {
-          templateUrl: 'app\lot\list\edit\edit.html',
+          templateUrl: 'app/lot/list/edit/edit.html',
           controller: 'LotEditController',
           controllerAs: 'edit',
           resolve: {lot: resolveLotFromArray}

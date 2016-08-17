@@ -37,7 +37,7 @@
       role: 'user',
       views: {
         '@customer': {
-          templateUrl: 'app\customer\main\main.html',
+          templateUrl: 'app/customer/main/main.html',
           controller: 'CustomerMainController',
           controllerAs: 'main'
         }

@@ -52,14 +52,14 @@
 
         // target the unnamed view in the customer state
         '@customer': {
-          templateUrl: 'app\customer\list\list.html',
+          templateUrl: 'app/customer/list/list.html',
           controller: 'CustomerListController',
           controllerAs: 'list'
         },
 
         // target the content view in the customer.list state
         'content@customer.list': {
-          templateUrl: 'app\customer\list\items\items.html',
+          templateUrl: 'app/customer/list/items/items.html',
           controller: 'CustomerItemsController',
           controllerAs: 'items'
         }

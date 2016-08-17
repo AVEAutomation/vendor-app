@@ -39,7 +39,7 @@
       name: 'customer',
       url: '/customer',
       abstract: true,
-      templateUrl: 'app\customer\customer.html',
+      templateUrl: 'app/customer/customer.html',
       controller: 'CustomerController',
       controllerAs: 'index'
     };

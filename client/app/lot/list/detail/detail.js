@@ -40,7 +40,7 @@
       onEnter: onEnterLotListDetail,
       views: {
         'detail@lot.list': {
-          templateUrl: 'app\lot\list\detail\detail.html',
+          templateUrl: 'app/lot/list/detail/detail.html',
           controller: 'LotDetailController',
           controllerAs: 'detail',
           resolve: {lot: resolveLotFromArray}

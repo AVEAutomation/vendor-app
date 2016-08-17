@@ -52,14 +52,14 @@
 
         // target the unnamed view in the lot state
         '@lot': {
-          templateUrl: 'app\lot\list\list.html',
+          templateUrl: 'app/lot/list/list.html',
           controller: 'LotListController',
           controllerAs: 'list'
         },
 
         // target the content view in the lot.list state
         'content@lot.list': {
-          templateUrl: 'app\lot\list\items\items.html',
+          templateUrl: 'app/lot/list/items/items.html',
           controller: 'LotItemsController',
           controllerAs: 'items'
         }

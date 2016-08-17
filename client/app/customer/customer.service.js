@@ -108,8 +108,13 @@
   function CustomerDefinition (ModelDefinitions) {
     return ModelDefinitions.flat({
       name: {type: 'text', required: true},
-       info: 'text',
-      // active: 'boolean'
+      address: {
+        street: 'text',
+        city: 'text',
+        state: 'text',
+        zip: 'text'
+      },
+      phone: "text"
     });
   }
 })();

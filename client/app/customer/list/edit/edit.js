@@ -44,7 +44,7 @@
       onEnter: onEnterCustomerListEdit,
       views: {
         'detail@customer.list': {
-          templateUrl: 'app\customer\list\edit\edit.html',
+          templateUrl: 'app/customer/list/edit/edit.html',
           controller: 'CustomerEditController',
           controllerAs: 'edit',
           resolve: {customer: resolveCustomerFromArray}

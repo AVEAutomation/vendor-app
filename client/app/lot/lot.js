@@ -39,7 +39,7 @@
       name: 'lot',
       url: '/lot',
       abstract: true,
-      templateUrl: 'app\lot\lot.html',
+      templateUrl: 'app/lot/lot.html',
       controller: 'LotController',
       controllerAs: 'index'
     };

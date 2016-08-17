@@ -31,7 +31,7 @@
    * Route configuration function configuring the passed $stateProvider.
    * Register the 'customer.list.create' state. The onEnterCustomerListCreateView
    * function will be called when entering the state and open a modal dialog
-   * with the app\customer\create\create.html template loaded.
+   * with the app/customer/create/create.html template loaded.
    *
    * @param {$stateProvider} $stateProvider - The state provider to configure
    */
@@ -61,7 +61,7 @@
     $mdDialog.show({
       controller: 'CustomerCreateController',
       controllerAs: 'create',
-      templateUrl: 'app\customer\create\create.html',
+      templateUrl: 'app/customer/create/create.html',
       clickOutsideToClose: false
     }).then(transitionTo, transitionTo);
 

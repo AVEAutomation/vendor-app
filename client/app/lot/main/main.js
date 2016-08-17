@@ -37,7 +37,7 @@
       role: 'user',
       views: {
         '@lot': {
-          templateUrl: 'app\lot\main\main.html',
+          templateUrl: 'app/lot/main/main.html',
           controller: 'LotMainController',
           controllerAs: 'main'
         }

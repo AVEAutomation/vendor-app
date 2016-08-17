@@ -104,13 +104,36 @@
   };
 
   // add ShipmentDefinition dependencies to inject
-  ShipmentDefinition.$inject = ['ModelDefinitions'];
-  function ShipmentDefinition (ModelDefinitions) {
+  ShipmentDefinition.$inject = ['ModelDefinitions', 'Customer', 'Product'];
+  function ShipmentDefinition (ModelDefinitions, Customer, Product) {
     return ModelDefinitions.flat({
-      // TODO: update model defs to reflect backend
-      name: {type: 'text', required: true},
-       info: 'text',
-      // active: 'boolean'
+      orderId: {type: 'text', required: true},
+      creationDate: 'date',
+      shipByDate: 'date',
+      // TODO: check if this is okay for text enum
+      status: {
+        type: 'select', 
+        options: ['Unshipped', 'Shipment confirmed', 'Canceled',
+    'Delivered', 'Paid']
+      },
+      units: 'number',
+      payments: 'number',
+      sku: 'text',
+      product: {
+        type: 'select/resource',
+        resource: Product
+      },
+      customer: {
+        type: 'select/resource',
+        resource: Customer,
+        getOptions: function(model) {
+          var resource = Customer;
+          if (!resource || !resource.query) return $q.when([]);
+          return resource.query().$promise;
+        },
+        displayKey: 'name',
+        valueKey: '_id'
+      }
     });
   }
 })();

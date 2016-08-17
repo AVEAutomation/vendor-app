@@ -32,7 +32,8 @@
       "vendorAppApp.main",
       "vendorAppApp.shipment",
       "vendorAppApp.customer",
-      "vendorAppApp.lot"
+      "vendorAppApp.lot",
+      "vendorAppApp.product"
     ],
     "componentsDirectory": "client/app/components/",
     "routeDirectory": "client/app/",

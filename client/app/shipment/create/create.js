@@ -31,7 +31,7 @@
    * Route configuration function configuring the passed $stateProvider.
    * Register the 'shipment.list.create' state. The onEnterShipmentListCreateView
    * function will be called when entering the state and open a modal dialog
-   * with the app\shipment\create\create.html template loaded.
+   * with the app/shipment/create/create.html template loaded.
    *
    * @param {$stateProvider} $stateProvider - The state provider to configure
    */
@@ -61,7 +61,7 @@
     $mdDialog.show({
       controller: 'ShipmentCreateController',
       controllerAs: 'create',
-      templateUrl: 'app\shipment\create\create.html',
+      templateUrl: 'app/shipment/create/create.html',
       clickOutsideToClose: false
     }).then(transitionTo, transitionTo);
 

@@ -85,7 +85,8 @@ exports.customers = [{
     city: 'Seattle',
     state: 'WA',
     zip: '98125-4819'
-  }
+  },
+  phone: "2064985471"
 },{ 
   name: 'Amazon Locker - George',
   address: {
@@ -93,7 +94,8 @@ exports.customers = [{
     city: 'Seattle',
     state: 'WA',
     zip: '98125-4819'
-  }
+  },
+  phone: "2064985468"
 }];
 
 exports.lots = [{

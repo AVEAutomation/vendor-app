@@ -39,6 +39,12 @@ var ShipmentDefinition = {
 var ShipmentSchema = new mongoose.Schema(ShipmentDefinition);
 
 /**
+ * Set compound indices. Combination of orderId and product must be unique. 
+ */
+
+ShipmentSchema.index({orderId: 1, product: -1});
+
+/**
  * Attach security related plugins
  */
 ShipmentSchema.plugin(createdModifiedPlugin);
@@ -49,11 +55,11 @@ ShipmentSchema.plugin(requestContext, {
 });
 
 /**
- * Validations
+ * Validations TODO: validate unique {orderID + ProductId}
  */
-ShipmentSchema
-  .path('orderId')
-  .validate(validateUniqueOrderId, 'The specified orderId is already in use.');
+// ShipmentSchema
+//   .path('orderId')
+//   .validate(validateUniqueOrderId, 'The specified orderId is already in use.');
 
 /**
  *  The registered mongoose model instance of the Shipment model
