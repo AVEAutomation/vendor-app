@@ -8,6 +8,7 @@
 
 module.exports = LotController;
 
+var _ = require('lodash');
 var ParamController = require('../../lib/controllers/param.controller');
 
 /**
@@ -28,6 +29,8 @@ var Lot = require('./lot.model').model;
  */
 function LotController(router) {
   ParamController.call(this, Lot,  router);
+
+  this.populations = ['shipments'];
 
   // modify select only properties
   // this.select = ['-__v'];
@@ -51,5 +54,5 @@ LotController.prototype = {
 };
 
 // inherit from ParamController
-LotController.prototype = Object.create(ParamController.prototype);
+LotController.prototype = _.create(ParamController.prototype, LotController.prototype);
 

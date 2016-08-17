@@ -122,6 +122,7 @@ CrudController.prototype = {
 
     _.forEach(this.populations, function(population) {
       if (population.methods && !population.methods.index) return;
+      console.log('populating field: ' + population);
       query.populate(population);
     });
 
@@ -147,6 +148,7 @@ CrudController.prototype = {
 
     _.forEach(this.populations, function(population) {
       if (population.methods && !population.methods.show) return;
+      console.log('populating field: ' + population);
       query.populate(population);
     });
 

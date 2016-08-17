@@ -31,7 +31,7 @@
           <h4>{{::propDef.desc}}</h4>
         </div>
         <div class="md-tile-content" flex hide show-gt-md>
-            <h4>Active</h4>
+            <h4>Shipments</h4>
         </div>
       </md-item-content>
 
@@ -59,10 +59,8 @@
         </div>
 
         <div class="md-tile-content" flex hide show-gt-md>
-          <h3>
-            <md-icon ng-show="lot.active" class="list-info" md-svg-icon="toggle:ic_check_box_24px"></md-icon>
-            <md-icon ng-show="!lot.active" class="list-info" md-svg-icon="toggle:ic_check_box_outline_blank_24px"></md-icon>
-          </h3>
+          <h4>{{lot.shipments.length}}
+          </h4>
         </div>
 
       </md-item-content>

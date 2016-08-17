@@ -23,7 +23,7 @@ var createdModifiedPlugin = require('mongoose-createdmodified').createdModifiedP
 var LotDefinition = {
   created: {type: Date, default: Date.now()},
   shipped: Date,
-  shipments: {type: [mongoose.Schema.Types.ObjectId], ref: 'Shipment', required: true}
+  shipments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Shipment', index: true}]
 };
 
 /**

@@ -47,6 +47,7 @@ exports.users = [{
 
 exports.shipments = [
 {
+  // _id: '57b4bcf47a18a5b400923d78',
   orderId:"DKcRNc7XN",
   creationDate:"Aug 6, 2016",
   shipByDate:"Aug 12, 2016",
@@ -54,9 +55,10 @@ exports.shipments = [
   units:1,
   payments:"$3.92",
   sku: "06F",
-  product: ObjectId(1),
-  customer: ObjectId(1)
+  // product: ObjectId('57b4bcf37a18a5b400923d75'),
+  // customer: ObjectId('57b4bcf37a18a5b400923d73')
 }, {
+  // _id: '57b4bcf47a18a5b400923d79',
   orderId:"DplMb07cN",
   creationDate:"Aug 6, 2016",
   shipByDate:"Aug 12, 2016",
@@ -64,9 +66,10 @@ exports.shipments = [
   units:1,
   payments:"$6.78",
   sku: '12P',
-  product: ObjectId( 2),
-  customer: ObjectId(2)
+  // product: ObjectId('57b4bcf37a18a5b400923d76'),
+  // customer: ObjectId('57b4bcf37a18a5b400923d74')
 },{
+  // _id: '57b4bcf47a18a5b400923d7a',
   orderId:"DpTMbp7bN",
   creationDate:"Aug 6, 2016",
   shipByDate:"Aug 12, 2016",
@@ -74,11 +77,12 @@ exports.shipments = [
   units:1,
   payments:"$3.92",
   sku: "06F",
-  product: ObjectId( 1),
-  customer: ObjectId(3)
+  // product: '57b4bcf37a18a5b400923d77',
+  // customer: '57b4bcf37a18a5b400923d74'
 }];
 
 exports.customers = [{
+  // _id: '57b4bcf37a18a5b400923d73',
   name: 'Amazon Locker - Hannah',
   address: {
     street: '12355 15th Ave NE at 7-Eleven',
@@ -88,6 +92,7 @@ exports.customers = [{
   },
   phone: "2064985471"
 },{ 
+  // _id: '57b4bcf37a18a5b400923d74',
   name: 'Amazon Locker - George',
   address: {
     street: '12355 15th Ave NE at 7-Eleven',
@@ -101,24 +106,27 @@ exports.customers = [{
 exports.lots = [{
   created: "Aug 11, 2016",
   shipped: "Aug 12, 2016",
-  shipments: [ObjectId('1'), ObjectId('3')]
+  shipments: []
 }];
 
 exports.products = [{
+  // _id: '57b4bcf37a18a5b400923d77',
   name: 'Finess Softpatch for Stress Incontinence',
   upc: '860507000213',
   asin: 'B01438A52M'
 }, {
+  // _id: '57b4bcf37a18a5b400923d76',
   name: 'Finess Softpatch for Stress Incontinence',
   upc: '860507000206',
   asin: 'B013TT27TA'
 }, {
+  // _id: '57b4bcf37a18a5b400923d75',
   name: 'Finess Softpatch for Stress Incontinence',
   upc: '860507000220',
   asin: 'B01DEDVJLI'
 }];
 
-if ('development' === env) {
+if ('development' === env || 'test' === env) {
   console.log('Populating test and development data ...');
 
   User.find({}).remove(function () {
@@ -137,38 +145,63 @@ if ('development' === env) {
         console.error('Error while populating customers: %s', err);
       } else {
         console.log('finished populating customers');
+        popProducts();
       }
     });
   });
 
-  Product.find({}).remove(function () {
-    Product.create(exports.products, function (err) {
-      if (err) {
-        console.error('Error while populating products: %s', err);
-      } else {
-        console.log('finished populating products');
-      }
+  function popProducts() {
+    Product.find({}).remove(function () {
+      Product.create(exports.products, function (err) {
+        if (err) {
+          console.error('Error while populating products: %s', err);
+        } else {
+          console.log('finished populating products');
+          popShipments();
+        }
+      });
     });
-  });
+  }
 
-
-  Shipment.find({}).remove(function () {
-    Shipment.create(exports.shipments, function (err) {
-      if (err) {
-        console.error('Error while populating shipments: %s', err);
-      } else {
-        console.log('finished populating shipments');
-      }
+  function popShipments() {
+    Shipment.find({}).remove(function () {
+      Customer.find({}).exec().then(function(customers) {
+        exports.shipments.forEach(function (shipment, i) {
+          shipment.customer = customers[i%2]['_id'];
+        })
+        Product.find({}).exec().then(function(products) {
+          exports.shipments.forEach(function (shipment, i) {
+            shipment.product = products[i%3]['_id'];
+          })
+          Shipment.create(exports.shipments, function (err) {
+            if (err) {
+              console.error('Error while populating shipments: %s', err);
+            } else {
+              console.log('finished populating shipments');
+              popLots();
+            }
+          });
+        });
+      })
     });
-  });
-
-  Lot.find({}).remove(function () {
-    Lot.create(exports.lots, function (err) {
-      if (err) {
-        console.error('Error while populating lots: %s', err);
-      } else {
-        console.log('finished populating lots');
-      }
+  }
+  function popLots() {
+    Lot.find({}).remove(function () {
+      Shipment.find({}).exec().then(function(shipments) {
+        // console.log('in popLots, shipments: ' + JSON.stringify(shipments))
+        exports.lots.forEach(function (lot, i) {
+          lot.shipments.push(shipments[0]['_id']);
+          lot.shipments.push(shipments[2]['_id']);
+          // console.log('created lot shipments: ' + JSON.stringify(lot.shipments))
+        })
+        Lot.create(exports.lots, function (err) {
+          if (err) {
+            console.error('Error while populating lots: %s', err);
+          } else {
+            console.log('finished populating lots');
+          }
+        });
+      })
     });
-  });
+  }
 }

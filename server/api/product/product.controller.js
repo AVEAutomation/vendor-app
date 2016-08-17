@@ -8,6 +8,7 @@
 
 module.exports = ProductController;
 
+var _ = require('lodash');
 var ParamController = require('../../lib/controllers/param.controller');
 
 /**
@@ -51,5 +52,5 @@ ProductController.prototype = {
 };
 
 // inherit from ParamController
-ProductController.prototype = Object.create(ParamController.prototype);
+ProductController.prototype = _.create(ParamController.prototype, ProductController.prototype);
 

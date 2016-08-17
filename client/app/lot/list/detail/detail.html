@@ -4,9 +4,11 @@
     <md-button ng-click="detail.goBack()" aria-label="Close detail view">
       <md-icon md-svg-icon="navigation:ic_close_24px"></md-icon>
     </md-button>
-    <md-button ng-click="detail.edit()" aria-label="Edit lot">
-      <md-icon md-svg-icon="content:ic_create_24px"></md-icon>
-    </md-button>
+    <label>Download Lot Shipping Labels
+      <md-button ng-click="detail.edit()" aria-label="Download Lot Shipping Labels">
+        <md-icon md-svg-icon="file:ic_file_download_24px"></md-icon>
+      </md-button>
+    </label>
   </span>
 
   <span class="md-toolbar-tools md-toolbar-tools-bottom" layout="column">
@@ -21,10 +23,6 @@
 
     <span class="section-title">Lot data</span>
 
-    <span layout="row" layout-align="start center" class="detail-info" ng-hide="detail.lot.active">
-      <span flex>This lot is not active</span>
-    </span>
-
     <span ng-repeat="propDef in index.lotDefinition" layout="row" layout-sm="column" class="detail-info">
       <span flex="45">{{::propDef.desc}}</span>
       <span flex>{{
@@ -34,10 +32,27 @@
         )}}
       </span>
     </span>
+  </section>
+  <section class="section" layout="column">
+
+    <span class="section-title">Lot Shipments</span>
+    <span layout="row" layout-sm="column" class="section-title">
+      <span flex="30">Order</span>
+      <span flex="30">SKU</span>
+      <span flex="30">Creation Date</span>
+    </span>
+
+
+    <span ng-repeat="shipment in detail.lot.shipments" layout="row" layout-sm="column" class="detail-info">
+      <span flex="30">{{shipment.orderId}}</span>
+      <span flex="30">{{shipment.sku}}</span>
+      <span flex="30">{{shipment.creationDate | date:'mediumDate'}}</span>
+      
+    </span>
 
   </section>
 
-  <section class="section" layout="column">
+  <!-- <section class="section" layout="column">
 
     <span class="section-title">Record Information</span>
 
@@ -55,7 +70,7 @@
       <span flex ng-show="detail.lot.created" class="subtitle">{{detail.lot.created | date:'dd. MMMM yyyy H:mm'}}</span>
     </span>
 
-  </section>
+  </section> -->
 
 </md-content>
 

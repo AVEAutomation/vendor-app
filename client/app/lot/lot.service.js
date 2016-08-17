@@ -107,9 +107,9 @@
   LotDefinition.$inject = ['ModelDefinitions'];
   function LotDefinition (ModelDefinitions) {
     return ModelDefinitions.flat({
-      name: {type: 'text', required: true},
-       info: 'text',
-      // active: 'boolean'
+      // TODO: add ability to add filter params ie: ngFilterParams:'mediumDate'
+      created: {type: 'date', required: true, ngFilter: 'date'},
+      shipped: {type: 'date', ngFilter: 'date'}
     });
   }
 })();

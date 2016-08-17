@@ -28,8 +28,8 @@ var ShipmentDefinition = {
   units: Number,
   payments: Currency,
   sku: {type: String, required: true},
-  product: {type: ObjectId, ref: 'Product'},
-  customer: {type: ObjectId, ref: 'Customer'}
+  product: {type: ObjectId, ref: 'Product', index: true},
+  customer: {type: ObjectId, ref: 'Customer', index: true}
 };
 
 /**

@@ -8,6 +8,7 @@
 
 module.exports = ShipmentController;
 
+var _ = require('lodash');
 var ParamController = require('../../lib/controllers/param.controller');
 
 /**
@@ -27,7 +28,10 @@ var Shipment = require('./shipment.model').model;
  * @see shipment:model~Shipment
  */
 function ShipmentController(router) {
-  ParamController.call(this, Shipment,  router);
+  ParamController.call(this, Shipment, router);
+
+  // modify populations
+  this.populations = ['product', 'customer'];
 
   // modify select only properties
   // this.select = ['-__v'];
@@ -37,6 +41,7 @@ function ShipmentController(router) {
 
   // property to return (maybe a virtual getter of the model)
   // this.defaultReturn = 'profile';
+  
 }
 
 // define properties for the ShipmentController here
@@ -48,8 +53,11 @@ ShipmentController.prototype = {
    */
   constructor: ShipmentController
 
+  // modify populations
+  // populations: ['product', 'customer']
+
 };
 
 // inherit from ParamController
-ShipmentController.prototype = Object.create(ParamController.prototype);
+ShipmentController.prototype = _.create(ParamController.prototype, ShipmentController.prototype);
 

@@ -30,9 +30,6 @@
         <div ng-repeat="propDef in index.productDefinition" class="md-tile-content" flex="66">
           <h4>{{::propDef.desc}}</h4>
         </div>
-        <div class="md-tile-content" flex hide show-gt-md>
-            <h4>Active</h4>
-        </div>
       </md-item-content>
 
       <md-divider md-inset></md-divider>
@@ -56,13 +53,6 @@
             propDef.ngFilter
             )}}
           </h4>
-        </div>
-
-        <div class="md-tile-content" flex hide show-gt-md>
-          <h3>
-            <md-icon ng-show="product.active" class="list-info" md-svg-icon="toggle:ic_check_box_24px"></md-icon>
-            <md-icon ng-show="!product.active" class="list-info" md-svg-icon="toggle:ic_check_box_outline_blank_24px"></md-icon>
-          </h3>
         </div>
 
       </md-item-content>

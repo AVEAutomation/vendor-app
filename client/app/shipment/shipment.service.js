@@ -120,19 +120,19 @@
       payments: 'number',
       sku: 'text',
       product: {
-        type: 'select/resource',
-        resource: Product
+        name: {type: 'text', displayPriority: 'low'},
+        sku: 'text',
+        asin: 'text'
       },
       customer: {
-        type: 'select/resource',
-        resource: Customer,
-        getOptions: function(model) {
-          var resource = Customer;
-          if (!resource || !resource.query) return $q.when([]);
-          return resource.query().$promise;
+        name: 'text',
+        address: {
+          street: {type: 'text', displayPriority: 'low'},
+          city: {type: 'text', displayPriority: 'low'},
+          state: {type: 'text', displayPriority: 'low'},
+          zip: {type: 'text', displayPriority: 'low'},
         },
-        displayKey: 'name',
-        valueKey: '_id'
+        phone: {type: 'text', displayPriority: 'low'},
       }
     });
   }

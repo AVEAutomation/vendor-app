@@ -114,7 +114,7 @@
         state: 'text',
         zip: 'text'
       },
-      phone: "text"
+      phone: 'text'
     });
   }
 })();
