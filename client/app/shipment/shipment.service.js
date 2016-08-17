@@ -108,8 +108,8 @@
   function ShipmentDefinition (ModelDefinitions, Customer, Product) {
     return ModelDefinitions.flat({
       orderId: {type: 'text', required: true},
-      creationDate: 'date',
-      shipByDate: 'date',
+      creationDate: {type: 'date', ngFilter: 'date'},
+      shipByDate: {type: 'date', ngFilter: 'date'},
       // TODO: check if this is okay for text enum
       status: {
         type: 'select', 
@@ -120,19 +120,17 @@
       payments: 'number',
       sku: 'text',
       product: {
-        name: {type: 'text', displayPriority: 'low'},
-        sku: 'text',
         asin: 'text'
       },
       customer: {
-        name: 'text',
-        address: {
+        name: {type: 'text', desc: 'Customer', displayPriority: 'low'},
+        address: {type: 'text', desc: 'Destination Address', displayPriority: 'low'}
+        /*{
           street: {type: 'text', displayPriority: 'low'},
           city: {type: 'text', displayPriority: 'low'},
           state: {type: 'text', displayPriority: 'low'},
           zip: {type: 'text', displayPriority: 'low'},
-        },
-        phone: {type: 'text', displayPriority: 'low'},
+        }*/
       }
     });
   }

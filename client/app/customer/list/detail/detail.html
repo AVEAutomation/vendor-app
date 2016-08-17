@@ -4,9 +4,9 @@
     <md-button ng-click="detail.goBack()" aria-label="Close detail view">
       <md-icon md-svg-icon="navigation:ic_close_24px"></md-icon>
     </md-button>
-    <md-button ng-click="detail.edit()" aria-label="Edit customer">
+    <!-- <md-button ng-click="detail.edit()" aria-label="Edit customer">
       <md-icon md-svg-icon="content:ic_create_24px"></md-icon>
-    </md-button>
+    </md-button> -->
   </span>
 
   <span class="md-toolbar-tools md-toolbar-tools-bottom" layout="column">
@@ -21,10 +21,6 @@
 
     <span class="section-title">Customer data</span>
 
-    <span layout="row" layout-align="start center" class="detail-info" ng-hide="detail.customer.active">
-      <span flex>This customer is not active</span>
-    </span>
-
     <span ng-repeat="propDef in index.customerDefinition" layout="row" layout-sm="column" class="detail-info">
       <span flex="45">{{::propDef.desc}}</span>
       <span flex>{{
@@ -36,6 +32,8 @@
     </span>
 
   </section>
+
+  <!-- todo: add purchase history for customer -->
 
   <section class="section" layout="column">
 

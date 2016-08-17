@@ -40,7 +40,7 @@
   function CustomerService(Customer) {
 
     return {
-      create: create,
+      // create: create,
       update: update,
       remove: remove
     };
@@ -108,13 +108,14 @@
   function CustomerDefinition (ModelDefinitions) {
     return ModelDefinitions.flat({
       name: {type: 'text', required: true},
-      address: {
+      address: {type: 'text', desc: 'Most Recent Address'},
+      /*{
         street: 'text',
         city: 'text',
         state: 'text',
         zip: 'text'
-      },
-      phone: 'text'
+      },*/
+      phone: {type: 'text', desc: 'Most Recent Phone'}
     });
   }
 })();

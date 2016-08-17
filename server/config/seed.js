@@ -126,6 +126,16 @@ exports.products = [{
   asin: 'B01DEDVJLI'
 }];
 
+// Join all address fields of customers
+exports.customers = exports.customers.map(function(customer) {
+  var addr = customer.address, lines = [];
+  lines.push(addr.street);
+  lines.push(addr.city + ', ' + addr.state + ' ' + addr.zip);
+  
+  customer.address = lines.join('\n');
+  return customer;
+})
+
 if ('development' === env || 'test' === env) {
   console.log('Populating test and development data ...');
 

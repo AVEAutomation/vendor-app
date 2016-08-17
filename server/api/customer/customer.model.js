@@ -21,13 +21,14 @@ var createdModifiedPlugin = require('mongoose-createdmodified').createdModifiedP
  */
 var CustomerDefinition = {
   name: {type: String, required: true},
-  address: {
+  address: {type: String, required: true},
+  /*{
     street: {type:String, required: true}, 
     streetLine2: {type: String, required: false},
     zip: {type: String, required: true},
     state: {type: String, required: true},
     city: {type: String, required: true}
-  },
+  },*/
   phone: {
     type: String,
     validate: {

@@ -27,7 +27,9 @@
     <md-item class="list-head" hide-sm>
 
       <md-item-content>
-        <div ng-repeat="propDef in index.lotDefinition" class="md-tile-content" flex="66">
+        <div ng-repeat="propDef in index.lotDefinition" 
+          class="md-tile-content" flex="66"
+          ng-show="propDef.displayPriority !== 'low'">
           <h4>{{::propDef.desc}}</h4>
         </div>
         <div class="md-tile-content" flex hide show-gt-md>
@@ -49,11 +51,14 @@
           <list-image string="{{lot.name}}"></list-image>
         </div>
 
-        <div ng-repeat="propDef in index.lotDefinition" class="md-tile-content" flex="66">
+        <div ng-repeat="propDef in index.lotDefinition"
+          class="md-tile-content" flex="66"
+          ng-show="propDef.displayPriority !== 'low'">
           <h4>{{
             ::applyFilter(
             index.ModelDefinitions.get(lot, propDef.name),
             propDef.ngFilter
+            <!-- is there a third param for filter args? -->
             )}}
           </h4>
         </div>

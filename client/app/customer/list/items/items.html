@@ -12,11 +12,11 @@
     <span>Customers List</span>
   </h2>
 
-  <a ui-sref="customer.list.create">
+  <!-- <a ui-sref="customer.list.create">
     <md-button hide show-gt-md ng-if="list.customers.length" class="md-fab md-accent md-fab-top-left fab-overlap" aria-label="Create a new customer">
       <md-icon md-svg-icon="content:ic_add_24px"></md-icon>
     </md-button>
-  </a>
+  </a> -->
 
 </md-toolbar>
 
@@ -27,7 +27,7 @@
     <md-item class="list-head" hide-sm>
 
       <md-item-content>
-        <div ng-repeat="propDef in index.customerDefinition" class="md-tile-content" flex="66">
+        <div ng-repeat="propDef in index.customerDefinition" class="md-tile-content" flex>
           <h4>{{::propDef.desc}}</h4>
         </div>
       </md-item-content>
@@ -46,7 +46,7 @@
           <list-image string="{{customer.name}}"></list-image>
         </div>
 
-        <div ng-repeat="propDef in index.customerDefinition" class="md-tile-content" flex="66">
+        <div ng-repeat="propDef in index.customerDefinition" class="md-tile-content" flex>
           <h4>{{
             ::applyFilter(
             index.ModelDefinitions.get(customer, propDef.name),
